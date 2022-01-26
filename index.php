@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+
     <title>Kanye Unlimited LogIn</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 border-bottom border-secondary">
         <div class="container">
             <a href="" class="navbar-brand">
                 Kanye Unlimited
@@ -23,7 +25,7 @@
             <!--ovo ti je za responzivnost dugmence, stavi navbar posle za ID  -->
         </div>
     </nav>
-
+    <!-- Navbar i login forma -->
     <section class="bg-dark text-light p-5 text-start">
         <div class="container">
             <div class="d-sm-flex">
@@ -41,13 +43,63 @@
                         <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                         <label class="floatingText" for="floatingPassword">Password</label>
                     </div>
-                    <div class=""> 
+                    <div class="">
                         <button class="btn btn-primary btn-lg">LogIn</button>
                     </div>
 
                 </div>
             </div>
+        </div>
+    </section>
 
+    <!-- kutijice -->
+    <section class="p-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md">
+                    <div class="card bg-dark text-light h-100">
+                        <div class="h1 m-3">
+                            <i class="bi bi-vinyl"></i>
+                        </div>
+                        <h3 class="card-title">
+                            Records
+                        </h3>
+                        <p class="card-text m-3">
+                            Find vinyls and records you love.
+                            Explore all of Kanye West interesting personalitys, that he goes through every album.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md ">
+                    <div class="card bg-secondary text-light h-100">
+                        <div class="h1 m-3">
+                            <i class="bi bi-cart"></i>
+                        </div>
+                        <h3 class="card-title">
+                            Shop
+                        </h3>
+                        <p class="card-text m-3">
+                            Have a look at our fenomenal selection of hoodies, t-shirts, sneakers and many more Yeezy
+                            related things.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-dark text-light h-100">
+                        <div class="h1 m-3">
+                            <i class="bi bi-truck"></i>
+                        </div>
+                        <h3 class="card-title">
+                            Shipping
+                        </h3>
+                        <p class="card-text m-3">
+                            We do the shipping all around the world!
+                            All you have to do is to pick your Yeezy box and it will be at your dore within a month.
+                            Don't forget to have fun.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
