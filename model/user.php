@@ -14,10 +14,11 @@
             $this->email = $email;
         }
 
-        public function logInUser($email, $password, mysqli $conn)
+        public static function logInUser($email, $password, mysqli $conn)
         {
-            $query = "SELECT * from user where email = $email and password = $password";
+            $query = "SELECT * from user where `email` = $email and `password` = $password";
             //konekcija sa bazom
+            return $conn->query($query);
         }
     }
 
