@@ -10,8 +10,8 @@ if(isset($_POST['email']) && isset($_POST['password']))
     $uemail = $_POST['email'];
     $upass = $_POST['password'];
 
-    $usr = new User(1, "dak", $upass, $uemail);
-    $odg = User::logInUser($usr,$conn);
+    
+    $odg = User::logInUser($uemail, $upass, $conn);
 
     if($odg->num_rows==1)
     {
@@ -21,7 +21,8 @@ if(isset($_POST['email']) && isset($_POST['password']))
         </script>
         `;
         $row = mysqli_fetch_row($odg);
-        $_SESSION['user_id'] = $row[0];
+        $usr = new User($row[0], $row[1],$row[2]);
+        $_SESSION['user'] = $usr;
         header('Location: home.php');
         exit();
     }
