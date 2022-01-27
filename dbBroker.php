@@ -8,6 +8,6 @@ $conn = new mysqli($host,$user,$pass,$db);
 
 if($conn -> connect_errno)
 {
-    exit("Neuspesna konekcija sa bazom ". $conn->connect_error);
+    exit("Neuspesna konekcija sa bazom ".$conn->connect_error);
 }
 ?>

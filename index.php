@@ -33,20 +33,21 @@
                     <img class="img-fluid" src="slike/kwbg.jpg" alt="Kanye West">
                 </div>
                 <div>
-                    <h1>Welcome to </h1>
-                    <h1 class="mb-5"><span class="text-warning">Kanye West</span> shop</h1>
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label class="floatingText" for="floatingInput">Email address</label>
-                    </div>
-                    <div class="form-floating mb-5">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <label class="floatingText" for="floatingPassword">Password</label>
-                    </div>
-                    <div class="">
-                        <button class="btn btn-primary btn-lg">LogIn</button>
-                    </div>
-
+                    <form method="POST" action="#">
+                        <h1>Welcome to </h1>
+                        <h1 class="mb-5"><span class="text-warning">Kanye West</span> shop</h1>
+                        <div class="form-floating mb-3">
+                            <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label class="floatingText" for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-5">
+                            <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label class="floatingText" for="floatingPassword">Password</label>
+                        </div>
+                        <div class="">
+                            <button name="submit" type="submit" class="btn btn-primary btn-lg">LogIn</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
