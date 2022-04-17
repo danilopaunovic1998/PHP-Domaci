@@ -6,7 +6,6 @@
          header('Location: index.php');
          exit();
      }
-     
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,8 +54,34 @@
    <!--forma za dodavanje proizvoda-->
    <section class="bg-dark text-light p-5 text-start">
         <div class="container">
-            <h1>Create product</h1>
-            
+            <h1>Create New Product</h1>
+            <br>
+            <form action="" method="post">
+
+                <div class="form-group">
+                    <label> Product Title </label>
+                    <input type="text" name="title" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label> Product Description </label>
+                    <input type="text" name="description" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label> Product Price </label>
+                    <input type="text" name="price" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label> Product Type </label>
+                    <select class="form-select form-select" aria-label=".form-select-sm example">
+                         <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                    </select>
+                </div>
+                <br>
+                <button id="addProduct" type="submit" class="btn btn-secondary">Submit</button>
+            </form>
            
         </div>
     </section>
