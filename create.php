@@ -56,7 +56,7 @@
         <div class="container">
             <h1>Create New Product</h1>
             <br>
-            <form action="" method="post">
+            <form action="" method="post" id="addProduct">
 
                 <div class="form-group">
                     <label> Product Title </label>
@@ -80,13 +80,14 @@
                     </select>
                 </div>
                 <br>
-                <button id="addProduct" type="submit" class="btn btn-secondary">Submit</button>
+                <button type="submit" class="btn btn-secondary">Submit</button>
             </form>
            
         </div>
     </section>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

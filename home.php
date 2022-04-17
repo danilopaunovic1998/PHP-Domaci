@@ -88,7 +88,7 @@
                    <?php while ($red = $proizvodi->fetch_array()): ?>
                     <tr>
                         
-                        <td><?php echo $i+1?></td>
+                        <td><?php echo ++$i?></td>
                         <td><?php echo $red["title"] ?></td>
                         <td><?php echo $red["description"]?></td>
                         <td><?php echo $red["price"]?></td>
