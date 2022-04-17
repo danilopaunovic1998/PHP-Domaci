@@ -1,3 +1,29 @@
+
+<?php
+
+    require "dbBroker.php";
+    require "model/product.php";
+    $i = 0;
+    session_start();
+    if(!isset($_SESSION["user"])){
+        header('Location: index.php');
+        exit();
+    }
+
+    $proizvodi = Product::getAll($conn);
+    if(!$proizvodi)
+    {
+        echo "Nastala je greska pri preuzimanju popataka";
+        die();
+    }
+    if($proizvodi->num_rows == 0){
+        echo "Nema proizvoda";
+        die();
+    }
+    else {}
+   
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,10 +70,35 @@
    
     <section class="bg-dark text-light p-5 text-start">
         <div class="container">
-            
+            <h1>Products</h1>
+
+            <table class = "table table-dark table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--petlja-->
+                   <?php while ($red = $proizvodi->fetch_array()): ?>
+                    <tr>
+                        
+                        <td><?php echo $i+1?></td>
+                        <td><?php echo $red["title"] ?></td>
+                        <td><?php echo $red["description"]?></td>
+                        <td><?php echo $red["price"]?></td>
+                    </tr>
+                    <?php endwhile;?>
+                </tbody>
+            </table>
         </div>
     </section>
-
+    
     <!--SearchBar-->
     <!--Ponuda-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
