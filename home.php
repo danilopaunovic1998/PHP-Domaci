@@ -93,8 +93,9 @@
                         <td><?php echo $red["description"]?></td>
                         <td><?php echo $red["price"]?></td>
                         <td>
-                            <button type="button" class="btn btn-secondary">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button value="<?php echo $red['productid'] ?>" class="btn btn-warning btn-izmeni" data-toggle="modal" data-target="#izmeniModal">Izmeni</button>
+                            <button  type="button" value=<?php echo $red['productid'] ?> method="post" class="btn btn-secondary dugmeIzmeni">Edit</button>
+                            <button  onclick = "deleteFunc(<?php echo $red['productid']?>)" class="btn btn-danger dugmeObrisi">Delete</button>
                         </td>
                     </tr>
                     <?php endwhile;?>
@@ -102,10 +103,11 @@
             </table>
         </div>
     </section>
-    
     <!--SearchBar-->
     <!--Ponuda-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

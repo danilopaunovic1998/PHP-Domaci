@@ -18,7 +18,7 @@ $('#addProduct').submit(function(){
         if(res == "Success"){
             alert("Uspesno dodat proizvod");
             console.log("Dodat proizvod");
-           window.location.replace("home.php");
+            window.location.replace("home.php");
             
         } else console.log("Proizvod nije dodat "+ res);
         console.log(res);
@@ -29,4 +29,28 @@ $('#addProduct').submit(function(){
 
         console.error("Greska je: " +textStatus, errorThrown);
     })
-})
+});
+
+function deleteFunc(id) {
+    console.log("OVDEEE SAM")
+    console.log("Brisanje");
+
+    req = $.ajax({
+        url: 'handler/delete.php',
+        type:'post',
+        data: {'id':id}
+    });
+
+    req.done(function(res, textStatus, jqXHR){
+        if(res=="Success"){
+           alert('Obrisan kolokvijum');
+           console.log('Obrisan');
+           location.reload(true);
+        }else {
+        console.log("Kolokvijum nije obrisan "+res);
+        alert("Kolokvijum nije obrisan ");
+
+        }
+        console.log(res);
+    });
+}

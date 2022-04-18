@@ -25,7 +25,7 @@
 
         public static function getById($id, mysqli $conn)
         {
-            $query = "SELECT * FROM product WHERE id = $id";
+            $query = "SELECT * FROM product WHERE productid = $id";
             $myObj = array();
             if($msqlObj = $conn->query($query))
             {
@@ -44,7 +44,7 @@
 
         public function deleteById(mysqli $conn)
         {
-            $query = "DELETE FROM product WHERE id = $this->id";
+            $query = "DELETE FROM product WHERE productid = $this->productid";
             return $conn->query($query);
         }
         
