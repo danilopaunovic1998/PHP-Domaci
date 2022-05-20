@@ -54,8 +54,6 @@ function deleteFunc(id) {
 }
 
 function popuniModal(id) {
-    alert("" + id);
-    alert("Usao u f-ju popuni");
     request = $.ajax({
         url: 'handler/get.php',
         type:'post',
