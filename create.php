@@ -33,10 +33,10 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Home</a>
+                        <a href="home.php" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="create.php" class="nav-link">Create product</a>
+                        <a href="#" class="nav-link">Create product</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Danilo Paunovic</a>

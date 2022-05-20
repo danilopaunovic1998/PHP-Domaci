@@ -1,27 +1,25 @@
-
 <?php
 
-    require "dbBroker.php";
-    require "model/product.php";
-    $i = 0;
-    session_start();
-    if(!isset($_SESSION["user"])){
-        header('Location: index.php');
-        exit();
-    }
+require "dbBroker.php";
+require "model/product.php";
+$i = 0;
+session_start();
+if (!isset($_SESSION["user"])) {
+    header('Location: index.php');
+    exit();
+}
 
-    $proizvodi = Product::getAll($conn);
-    if(!$proizvodi)
-    {
-        echo "Nastala je greska pri preuzimanju popataka";
-        die();
-    }
-    if($proizvodi->num_rows == 0){
-        echo "Nema proizvoda";
-        die();
-    }
-    else {}
-   
+$proizvodi = Product::getAll($conn);
+if (!$proizvodi) {
+    echo "Nastala je greska pri preuzimanju popataka";
+    die();
+}
+if ($proizvodi->num_rows == 0) {
+    echo "Nema proizvoda";
+    die();
+} else {
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -67,12 +65,12 @@
             <!--ovo ti je za responzivnost dugmence, stavi navbar posle za ID  -->
         </div>
     </nav>
-   
+
     <section class="bg-dark text-light p-5 text-start">
         <div class="container">
             <h1>Products</h1>
 
-            <table class = "table table-dark table-striped table-bordered">
+            <table class="table table-dark table-striped table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -85,24 +83,63 @@
                 </thead>
                 <tbody>
                     <!--petlja-->
-                   <?php while ($red = $proizvodi->fetch_array()): ?>
-                    <tr>
-                        
-                        <td><?php echo ++$i?></td>
-                        <td><?php echo $red["title"] ?></td>
-                        <td><?php echo $red["description"]?></td>
-                        <td><?php echo $red["price"]?></td>
-                        <td>
-                            <button value="<?php echo $red['productid'] ?>" class="btn btn-warning btn-izmeni" data-toggle="modal" data-target="#izmeniModal">Izmeni</button>
-                            <button  type="button" value=<?php echo $red['productid'] ?> method="post" class="btn btn-secondary dugmeIzmeni">Edit</button>
-                            <button  onclick = "deleteFunc(<?php echo $red['productid']?>)" class="btn btn-danger dugmeObrisi">Delete</button>
-                        </td>
-                    </tr>
-                    <?php endwhile;?>
+                    <?php while ($red = $proizvodi->fetch_array()) : ?>
+                        <tr>
+
+                            <td><?php echo ++$i ?></td>
+                            <td><?php echo $red["title"] ?></td>
+                            <td><?php echo $red["description"] ?></td>
+                            <td><?php echo $red["price"] ?></td>
+                            <td>
+                                <button onclick="popuniModal(<?php echo $red['productid']?>)" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#IzmeniModal">Izmeni</button>
+                                <button onclick="deleteFunc(<?php echo $red['productid'] ?>)" class="btn btn-danger dugmeObrisi">Delete</button>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
                 </tbody>
             </table>
         </div>
     </section>
+    <!--izmeniModal-->
+    <!-- Modal -->
+    <div class="modal fade " id="IzmeniModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="mojModal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post" id="UpdateProduct">
+
+                        <div class="form-group">
+                            <label> Product Title </label>
+                            <input id="title" type="text" name="title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label> Product Description </label>
+                            <input id = "description" type="text" name="description" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label> Product Price </label>
+                            <input id="price" type="text" name="price" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label> Product Type </label>
+                            <select id="type" class="form-select form-select" aria-label=".form-select-sm example">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--SearchBar-->
     <!--Ponuda-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -32,13 +32,11 @@ $('#addProduct').submit(function(){
 });
 
 function deleteFunc(id) {
-    console.log("OVDEEE SAM")
-    console.log("Brisanje");
 
     req = $.ajax({
         url: 'handler/delete.php',
         type:'post',
-        data: {'id':id}
+        data: {'id': id}
     });
 
     req.done(function(res, textStatus, jqXHR){
@@ -53,4 +51,37 @@ function deleteFunc(id) {
         }
         console.log(res);
     });
+}
+
+function popuniModal(id) {
+    alert("" + id);
+    alert("Usao u f-ju popuni");
+    request = $.ajax({
+        url: 'handler/get.php',
+        type:'post',
+        data: {'id': id},
+        dataType: 'json'
+    });
+
+    request.done(function(response, textStatus, jqXHR){
+        console.log("popunjena");
+        console.log(response);
+        $('#title').val(response[0]['title']);
+        console.log(response[0]['title']);
+
+        $('#description').val(response[0]['description'].trim());
+        console.log(response[0]['description'].trim());
+
+        $('#price').val(response[0]['price'].trim());
+        console.log(response[0]['price'].trim());
+        
+
+    });
+
+    request.fail(function(jqXHR, textStatus, errorThrown){
+
+        console.error("Greska je: " +textStatus, errorThrown);
+    });
+
+
 }

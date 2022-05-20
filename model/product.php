@@ -31,9 +31,11 @@
             {
                 while($red = $msqlObj->fetch_array(1))
                 {
-                   $myObj=$red;         
+                   $myObj[]=$red;         
                 }
             }
+
+            return $myObj;
         }
 
         public static function add(Product $product, mysqli $conn)
