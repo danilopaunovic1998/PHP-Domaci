@@ -1,11 +1,23 @@
-<?php 
-     require "dbBroker.php";
-     $i = 0;
-     session_start();
-     if(!isset($_SESSION["user"])){
-         header('Location: index.php');
-         exit();
-     }
+<?php
+require "dbBroker.php";
+require "model/type.php";
+$i = 0;
+session_start();
+if (!isset($_SESSION["user"])) {
+    header('Location: index.php');
+    exit();
+}
+
+$types = Type::getAll($conn);
+if (!$types) {
+    echo "Nastala je greska pri preuzimanju popataka";
+    die();
+}
+if ($types->num_rows == 0) {
+    echo "Nema tipova proizvoda";
+    die();
+} else {
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,9 +62,9 @@
             <!--ovo ti je za responzivnost dugmence, stavi navbar posle za ID  -->
         </div>
     </nav>
-   
-   <!--forma za dodavanje proizvoda-->
-   <section class="bg-dark text-light p-5 text-start">
+
+    <!--forma za dodavanje proizvoda-->
+    <section class="bg-dark text-light p-5 text-start">
         <div class="container">
             <h1>Create New Product</h1>
             <br>
@@ -73,16 +85,16 @@
                 <div class="form-group">
                     <label> Product Type </label>
                     <select class="form-select form-select" aria-label=".form-select-sm example">
-                         <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <option selected>Open this select menu</option>
+                        <?php while ($red = $types->fetch_array()) : ?>
+                            <option value="<?php echo $red["typeid"] ?>"> <?php echo $red["name"] ?> </option>
+                        <?php endwhile; ?>
                     </select>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-secondary">Submit</button>
             </form>
-           
+
         </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

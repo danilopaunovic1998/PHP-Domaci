@@ -2,6 +2,7 @@
 
 require "dbBroker.php";
 require "model/product.php";
+require "model/type.php";
 $i = 0;
 session_start();
 if (!isset($_SESSION["user"])) {
@@ -10,12 +11,18 @@ if (!isset($_SESSION["user"])) {
 }
 
 $proizvodi = Product::getAll($conn);
-if (!$proizvodi) {
+$types = Type::getAll($conn);
+
+if (!$proizvodi || !$types) {
     echo "Nastala je greska pri preuzimanju popataka";
     die();
 }
 if ($proizvodi->num_rows == 0) {
     echo "Nema proizvoda";
+    die();
+}
+if ($types->num_rows == 0) {
+    echo "Nema kategorija";
     die();
 } else {
 }
@@ -128,9 +135,9 @@ if ($proizvodi->num_rows == 0) {
                             <label> Product Type </label>
                             <select id="type" name="id" class="form-select form-select" aria-label=".form-select-sm example">
                                 <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <?php while ($red = $types->fetch_array()) : ?>
+                                    <option value="<?php echo $red["typeid"] ?>"> <?php echo $red["name"] ?> </option>
+                                <?php endwhile; ?>
                             </select>
                         </div>
                         <br>
