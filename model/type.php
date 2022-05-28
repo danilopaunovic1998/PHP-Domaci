@@ -16,6 +16,20 @@
             return $conn->query($query);
 
         }
+
+        public static function getById(mysqli $conn, $id){
+            $query = "SELECT * FROM type WHERE typeid = $id";
+            $myObj = array();
+            if($msqlObj = $conn->query($query))
+            {
+                while($red = $msqlObj->fetch_array(1))
+                {
+                   $myObj[]=$red;         
+                }
+            }
+
+            return $myObj;
+        }
     }
 
 ?>

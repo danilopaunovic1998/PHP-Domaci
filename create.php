@@ -84,7 +84,7 @@ if ($types->num_rows == 0) {
                 </div>
                 <div class="form-group">
                     <label> Product Type </label>
-                    <select class="form-select form-select" aria-label=".form-select-sm example">
+                    <select class="form-select form-select" name = "category" aria-label=".form-select-sm example">
                         <option selected>Open this select menu</option>
                         <?php while ($red = $types->fetch_array()) : ?>
                             <option value="<?php echo $red["typeid"] ?>"> <?php echo $red["name"] ?> </option>

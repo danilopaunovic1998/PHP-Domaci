@@ -7,14 +7,16 @@
         public $description;
         public $image;
         public $price;
+        public $typeid;
 
-        public function __construct($productid = null, $title = null, $description = null, $price = null, $image = null)
+        public function __construct($productid = null, $title = null, $description = null, $price = null, $image = null, $typeid = null)
         {
             $this->productid = $productid;
             $this->title = $title;
             $this->description = $description;
             $this->image = $image;
             $this->price = $price;
+            $this->typeid = $typeid;
         }
 
         public static function getAll(mysqli $conn)
@@ -40,7 +42,7 @@
 
         public static function add(Product $product, mysqli $conn)
         {
-            $query = "INSERT INTO product(title, description, price) VALUES('$product->title', '$product->description', '$product->price')";
+            $query = "INSERT INTO product(title, description, price, typeid) VALUES('$product->title', '$product->description', '$product->price', '$product->typeid')";
             return $conn->query($query);
         }
 
@@ -52,7 +54,7 @@
         
         public function update($id, mysqli $conn)
         {
-            $query = "UPDATE product SET title = '$this->title', description = '$this->description', price = '$this->price' WHERE productid = '$id'";
+            $query = "UPDATE product SET title = '$this->title', description = '$this->description', price = '$this->price', typeid = '$this->typeid' WHERE productid = '$id'";
             return $conn->query($query);
             
         }

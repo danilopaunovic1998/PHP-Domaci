@@ -82,6 +82,7 @@ if ($types->num_rows == 0) {
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
+                        <th scope="col">Category</th>
                         <th scope="col">Description</th>
                         <th scope="col">Price</th>
                         <th scope="col">Action</th>
@@ -95,6 +96,8 @@ if ($types->num_rows == 0) {
 
                             <td><?php echo ++$i ?></td>
                             <td><?php echo $red["title"] ?></td>
+                            <td><?php $pom = Type::getById($conn, $red["typeid"]);
+                                echo $pom[0]["name"]?></td>
                             <td><?php echo $red["description"] ?></td>
                             <td><?php echo $red["price"] ?></td>
                             <td>
@@ -156,5 +159,5 @@ if ($types->num_rows == 0) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 </body>
-
+<footer class="bg-dark site-footer text-light p-5 text-start"></footer>
 </html>
