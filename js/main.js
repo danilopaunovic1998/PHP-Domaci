@@ -1,3 +1,5 @@
+
+
 $('#addProduct').submit(function(){
     event.preventDefault();
     console.log("Dodaj");
@@ -72,14 +74,44 @@ function popuniModal(id) {
 
         $('#price').val(response[0]['price'].trim());
         console.log(response[0]['price'].trim());
+        $('#productid').val(id);
         
 
     });
 
     request.fail(function(jqXHR, textStatus, errorThrown){
 
-        console.error("Greska je: " +textStatus, errorThrown);
+        console.error("Greska je: " + textStatus, errorThrown);
+    });
+}
+
+$('#updateProduct').submit(function(){
+    event.preventDefault();
+    console.log("Izmeni");
+    const $form =$(this);
+    const $input = $form.find('input, select, button, textarea');
+
+    const serijalizacija = $form.serialize();
+    console.log(serijalizacija);
+    $input.prop('disabled', true);
+
+    request = $.ajax({
+        url: 'handler/update.php',
+        type: 'post',
+        data: serijalizacija
     });
 
+    request.done(function(response, textStatus, jqXHR){
+        if(response == "Success"){
+            console.log("Izmenjeno");
+            location.reload(true);
+        }
+        else console.log("Nije izmenjeno" + response);
+        console.log(response);
+    });
+    request.fail(function(jqXHR, textStatus, errorThrown){
+        console.error('Problem je sledeci: ' + textStatus, errorThrown);
+    });
+});
 
-}
+

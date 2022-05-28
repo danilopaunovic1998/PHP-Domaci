@@ -91,7 +91,7 @@ if ($proizvodi->num_rows == 0) {
                             <td><?php echo $red["description"] ?></td>
                             <td><?php echo $red["price"] ?></td>
                             <td>
-                                <button onclick="popuniModal(<?php echo $red['productid']?>)" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#IzmeniModal">Izmeni</button>
+                                <button onclick="popuniModal(<?php echo $red['productid'] ?>)" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#IzmeniModal">Izmeni</button>
                                 <button onclick="deleteFunc(<?php echo $red['productid'] ?>)" class="btn btn-danger dugmeObrisi">Delete</button>
                             </td>
                         </tr>
@@ -110,7 +110,7 @@ if ($proizvodi->num_rows == 0) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="post" id="UpdateProduct">
+                    <form action="" method="post" id="updateProduct">
 
                         <div class="form-group">
                             <label> Product Title </label>
@@ -118,7 +118,7 @@ if ($proizvodi->num_rows == 0) {
                         </div>
                         <div class="form-group">
                             <label> Product Description </label>
-                            <input id = "description" type="text" name="description" class="form-control">
+                            <input id="description" type="text" name="description" class="form-control">
                         </div>
                         <div class="form-group">
                             <label> Product Price </label>
@@ -126,7 +126,7 @@ if ($proizvodi->num_rows == 0) {
                         </div>
                         <div class="form-group">
                             <label> Product Type </label>
-                            <select id="type" class="form-select form-select" aria-label=".form-select-sm example">
+                            <select id="type" name="id" class="form-select form-select" aria-label=".form-select-sm example">
                                 <option selected>Open this select menu</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -134,7 +134,10 @@ if ($proizvodi->num_rows == 0) {
                             </select>
                         </div>
                         <br>
-                        <button type="submit" class="btn btn-secondary">Submit</button>
+                        <div class="form-group">
+                            <input id="productid" type="hidden" name="id" class="form-control">
+                        </div>
+                        <button type="submit" id="btnIzmeni" class="btn btn-secondary">Submit</button>
                     </form>
                 </div>
             </div>

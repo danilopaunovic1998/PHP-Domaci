@@ -52,8 +52,9 @@
         
         public function update($id, mysqli $conn)
         {
-            $query = "UPDATE product SET title = $this->title, description = $this->description, price = $this->price WHERE id = $id";
+            $query = "UPDATE product SET title = '$this->title', description = '$this->description', price = '$this->price' WHERE productid = '$id'";
             return $conn->query($query);
+            
         }
     }
 
