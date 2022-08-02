@@ -35,23 +35,15 @@ $(document).ready(function () {
 
 
     $('#pretraga').keyup(function () {
-        unos = this.value;
-        request = $.ajax({
-            url: 'handler/sort.php',
-            type: 'post',
-            data: { 'param': unos },
-            dataType: 'json'
-        });
-        request.done(function (response, textStatus, jqXHR) {
-            //console.log("popunjena");
-            console.log(response);
-            location.reload(true);
-            
-        });
-        request.fail(function (jqXHR, textStatus, errorThrown) {
-
-            console.error("Greska je: " + textStatus, errorThrown);
-        });
+        var unos = $(this).val();
+        $.ajax({
+            url:'handler/sort.php',
+            method:'post',
+            data:{param: unos},
+            success: function(response){
+                $("#table-data").html(response);
+            }
+        })
     });
     $('#updateProduct').submit(function () {
         event.preventDefault();

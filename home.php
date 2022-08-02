@@ -104,7 +104,7 @@ if ($types->num_rows == 0) {
 
             <h1>Products</h1>
             <div id="myTable">
-                <table class="table tabelica">
+                <table id="table-data" class="table tabelica">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
