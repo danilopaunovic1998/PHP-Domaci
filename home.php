@@ -10,14 +10,15 @@ if (!isset($_SESSION["user"])) {
     exit();
 }
 
-$proizvodi = Product::getAll($conn);
+$_SESSION["proizvodi"] = Product::getAll($conn);
 $types = Type::getAll($conn);
-
-if (!$proizvodi || !$types) {
+?>
+<?php
+if (!$_SESSION["proizvodi"] || !$types) {
     echo "Nastala je greska pri preuzimanju popataka";
     die();
 }
-if ($proizvodi->num_rows == 0) {
+if ($_SESSION["proizvodi"]->num_rows == 0) {
     echo "Nema proizvoda";
     die();
 }
@@ -34,12 +35,13 @@ if ($types->num_rows == 0) {
 
 <head>
     <meta charset="UTF-8">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <title>Kanye Unlimited Home Page</title>
 </head>
@@ -73,43 +75,73 @@ if ($types->num_rows == 0) {
         </div>
     </nav>
 
-    <section class="bg-dark text-light p-5 text-start">
+
+
+    <section class="bg-dark text-light p-5 text-start baner1">
         <div class="container">
+
+
+            <div class="container">
+                <div class="row" id="filteri">
+                    <div class="col-lg-6 col-12 filter">
+                        <div class="input-group rounded">
+                            <input id="pretraga" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                            <span class="input-group-text border-0" id="search-addon">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12 filter">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Sort by price</option>
+                            <option value="1">Ascending</option>
+                            <option value="2">Descending</option>
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+
             <h1>Products</h1>
-
-            <table class="table table-dark table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Action</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <!--petlja-->
-                    <?php while ($red = $proizvodi->fetch_array()) : ?>
+            <div id="myTable">
+                <table class="table tabelica">
+                    <thead>
                         <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Action</th>
 
-                            <td><?php echo ++$i ?></td>
-                            <td><?php echo $red["title"] ?></td>
-                            <td><?php $pom = Type::getById($conn, $red["typeid"]);
-                                echo $pom[0]["name"]?></td>
-                            <td><?php echo $red["description"] ?></td>
-                            <td><?php echo $red["price"] ?></td>
-                            <td>
-                                <button onclick="popuniModal(<?php echo $red['productid'] ?>)" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#IzmeniModal">Izmeni</button>
-                                <button onclick="deleteFunc(<?php echo $red['productid'] ?>)" class="btn btn-danger dugmeObrisi">Delete</button>
-                            </td>
                         </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody id="kontent-tabelice">
+                        <!--petlja-->
+                        <?php
+                        while ($red = $_SESSION["proizvodi"]->fetch_array()) : ?>
+                            <tr>
+
+                                <td><?php echo ++$i ?></td>
+                                <td><?php echo $red["title"] ?></td>
+                                <td><?php $pom = Type::getById($conn, $red["typeid"]);
+                                    echo $pom[0]["name"] ?></td>
+                                <td><?php echo $red["description"] ?></td>
+                                <td><?php echo $red["price"] ?></td>
+                                <td>
+                                    <button onclick="popuniModal(<?php echo $red['productid'] ?>)" type="button" class="btn btn-primary dugme-izmeni" data-bs-toggle="modal" data-bs-target="#IzmeniModal">Izmeni</button>
+                                    <button onclick="deleteFunc(<?php echo $red['productid'] ?>)" class="btn btn-danger dugmeObrisi">Delete</button>
+                                </td>
+                            </tr>
+                        <?php endwhile;
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
+
+
     <!--izmeniModal-->
     <!-- Modal -->
     <div class="modal fade " id="IzmeniModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -136,7 +168,7 @@ if ($types->num_rows == 0) {
                         </div>
                         <div class="form-group">
                             <label> Product Type </label>
-                            <select id="type" name="id" class="form-select form-select" aria-label=".form-select-sm example">
+                            <select id="type" name="typeid" class="form-select form-select" aria-label=".form-select-sm example">
                                 <option selected>Open this select menu</option>
                                 <?php while ($red = $types->fetch_array()) : ?>
                                     <option value="<?php echo $red["typeid"] ?>"> <?php echo $red["name"] ?> </option>
@@ -160,4 +192,5 @@ if ($types->num_rows == 0) {
     <script src="js/main.js"></script>
 </body>
 <footer class="bg-dark site-footer text-light p-5 text-start"></footer>
+
 </html>

@@ -5,7 +5,40 @@
 body{
     height: 100%;
 }
-section{
-    height: 100%;
+
+.baner1{
+    height: 780px;
+    background-color: rgb(0, 8, 53) !important;
+    background-image: url("slike/back2.jpg");
+    background-size: cover;
+    background-position: center;
 }
 
+.tabelica thead tr{
+    background-color: rgb(0, 0, 0) !important;
+    padding: 10px !important;
+}
+.tabelica tr:nth-child(even) {
+   background-color: rgba(0, 0, 0, 0.616) ;
+   color: white;
+}
+.tabelica tr:nth-child(odd) {
+    background-color: rgba(127, 127, 127, 0.616) ;
+    color: white;
+ }
+ .dugme-izmeni{
+    background-color: white !important;
+    border: none !important;
+    color: black !important;
+ }
+ .dugme-izmeni:hover{
+    opacity: 75%;
+ }
+
+ .filter {
+    height: auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.486);
+    display: flex;
+    justify-content: space-evenly;
+ }
