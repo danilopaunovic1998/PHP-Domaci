@@ -37,6 +37,17 @@ $(document).ready(function () {
     $('#pretraga').keyup(function () {
         var unos = $(this).val();
         $.ajax({
+            url:'handler/search.php',
+            method:'post',
+            data:{param: unos},
+            success: function(response){
+                $("#table-data").html(response);
+            }
+        })
+    });
+    $("#sort").change(function(){
+        var unos = $(this).val();
+        $.ajax({
             url:'handler/sort.php',
             method:'post',
             data:{param: unos},

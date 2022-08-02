@@ -92,7 +92,7 @@ if ($types->num_rows == 0) {
                         </div>
                     </div>
                     <div class="col-lg-6 col-12 filter">
-                        <select class="form-select" aria-label="Default select example">
+                        <select id="sort" class="form-select" aria-label="Default select example">
                             <option selected>Sort by price</option>
                             <option value="1">Ascending</option>
                             <option value="2">Descending</option>
