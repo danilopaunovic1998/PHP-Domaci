@@ -128,12 +128,12 @@ function deleteFunc(id) {
 
     req.done(function (res, textStatus, jqXHR) {
         if (res == "Success") {
-            alert('Obrisan kolokvijum');
+            alert('Obrisan proizvod');
             console.log('Obrisan');
             location.reload(true);
         } else {
-            console.log("Kolokvijum nije obrisan " + res);
-            alert("Kolokvijum nije obrisan ");
+            console.log("Proizvod nije obrisan " + res);
+            alert("Proizvod nije obrisan ");
 
         }
         console.log(res);

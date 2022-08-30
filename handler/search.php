@@ -37,7 +37,7 @@ if ($result->num_rows > 0) {
       <td>' . $red["description"] . '</td>
       <td>' . $red["price"] . '</td>
       <td>
-          <button onclick="popuniModal(' . $red['productid'] . ')" type="button" class="btn btn-primary dugme-izmeni" data-bs-toggle="modal" data-bs-target="#IzmeniModal">Izmeni</button>
+          <button onclick="popuniModal(' . $red['productid'] . ')" type="button" class="btn btn-primary dugme-izmeni" data-bs-toggle="modal" data-bs-target="#IzmeniModal">Update</button>
           <button onclick="deleteFunc(' . $red['productid'] . ')" class="btn btn-danger dugmeObrisi">Delete</button>
       </td>
       </tr>

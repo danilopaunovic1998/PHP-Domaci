@@ -133,7 +133,7 @@ if ($types->num_rows == 0) {
                                 <td><?php echo $red["description"] ?></td>
                                 <td><?php echo $red["price"] ?></td>
                                 <td>
-                                    <button onclick="popuniModal(<?php echo $red['productid'] ?>)" type="button" class="btn btn-primary dugme-izmeni" data-bs-toggle="modal" data-bs-target="#IzmeniModal">Izmeni</button>
+                                    <button onclick="popuniModal(<?php echo $red['productid'] ?>)" type="button" class="btn btn-primary dugme-izmeni" data-bs-toggle="modal" data-bs-target="#IzmeniModal">Update</button>
                                     <button onclick="deleteFunc(<?php echo $red['productid'] ?>)" class="btn btn-danger dugmeObrisi">Delete</button>
                                 </td>
                             </tr>
