@@ -6,8 +6,8 @@ $output = '';
 $i = 0;
 if (isset($_POST['param'])) {
   $search = $_POST['param'];
-  $stm = $conn->prepare("SELECT * FROM product WHERE title LIKE CONCAT('%',?,'%')");
-  $stm->bind_param("s", $search);
+  $stm = $conn->prepare("SELECT * FROM product p JOIN type t ON (p.typeid = t.typeid) WHERE p.title LIKE CONCAT('%',?,'%') or t.name LIKE CONCAT('%',?,'%')");
+  $stm->bind_param("ss", $search, $search);
 } else {
   $stm = $conn->prepare("SELECT * FROM product");
 }
@@ -29,12 +29,11 @@ if ($result->num_rows > 0) {
   </thead>
   <tbody>';
   while ($red = $result->fetch_assoc()) {
-    $pom = Type::getById($conn, $red["typeid"]);
     $output .= '
       <tr>
       <td>' . ++$i . '</td>
       <td>' . $red["title"] . '</td>
-      <td>' . $pom[0]["name"] . '</td>
+      <td>' . $red["name"] . '</td>
       <td>' . $red["description"] . '</td>
       <td>' . $red["price"] . '</td>
       <td>
