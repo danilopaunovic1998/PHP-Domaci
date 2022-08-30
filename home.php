@@ -119,6 +119,7 @@ if ($types->num_rows == 0) {
 
                         </tr>
                     </thead>
+
                     <tbody id="kontent-tabelice">
                         <!--petlja-->
                         <?php
@@ -139,6 +140,7 @@ if ($types->num_rows == 0) {
                         <?php endwhile;
                         ?>
                     </tbody>
+
                 </table>
             </div>
         </div>
