@@ -65,9 +65,12 @@ if ($types->num_rows == 0) {
                     <li class="nav-item">
                         <a href="#" class="nav-link">Danilo Paunovic</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="logout.php" class="nav-link">Logout</a>
+                    </li>
                 </ul>
             </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
                 <span class="navbar-toggler-icon">
                 </span>
             </button>

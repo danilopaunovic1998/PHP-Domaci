@@ -53,9 +53,12 @@ if ($types->num_rows == 0) {
                     <li class="nav-item">
                         <a href="#" class="nav-link">Danilo Paunovic</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="logout.php" class="nav-link">Logout</a>
+                    </li>
                 </ul>
             </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
                 <span class="navbar-toggler-icon">
                 </span>
             </button>
@@ -64,7 +67,7 @@ if ($types->num_rows == 0) {
     </nav>
 
     <!--forma za dodavanje proizvoda-->
-    <section class="bg-dark text-light p-5 text-start">
+    <section class="bg-dark text-light p-5 text-start baner1">
         <div class="container">
             <h1>Create New Product</h1>
             <br>
@@ -84,7 +87,7 @@ if ($types->num_rows == 0) {
                 </div>
                 <div class="form-group">
                     <label> Product Type </label>
-                    <select class="form-select form-select" name = "category" aria-label=".form-select-sm example">
+                    <select class="form-select form-select" name="category" aria-label=".form-select-sm example">
                         <option selected>Open this select menu</option>
                         <?php while ($red = $types->fetch_array()) : ?>
                             <option value="<?php echo $red["typeid"] ?>"> <?php echo $red["name"] ?> </option>
@@ -101,5 +104,6 @@ if ($types->num_rows == 0) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 </body>
+<footer class="bg-dark site-footer text-light p-5 text-start"></footer>
 
 </html>
